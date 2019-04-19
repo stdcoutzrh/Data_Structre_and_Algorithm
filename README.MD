@@ -1,8 +1,9 @@
 # Data_Structre_and_Algorithm
 
-## Implemention of data structure and algorithm in c language.🌼
-## 1.Project Overview(Updating)
-<img src = "https://github.com/StdCoutZRH/Data_Structre_and_Algorithm/Data_Structre.png">              
+**Implemention of data structure and algorithm in c language**.🌼
+
+## 1.Project Overview
+<img src = "https://github.com/StdCoutZRH/Data_Structre_and_Algorithm/blob/master/Data_Structre.png">              
 
 ## 2.Feature Introduction
 ### 2.1Array
