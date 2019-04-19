@@ -218,33 +218,3 @@ bool si_isCyclic(single_list*single_list)
 	}
 	return false;
 }
-
-
-//test code
-
-int main(int argc,char*argv)
-{
-	single_list* my_list = si_createSingleList();
-	for(int i=100;i>=0;--i)
-	{
-		//si_appendEnd(my_list,i);
-		si_insertIndex(my_list,0,i);
-	}
-	si_print(my_list);
-	printf("cur size:%d\n\n",si_getSize(my_list));
-	
-	//si_insertIndex(my_list,4,666);
-	//si_print(my_list);
-	//printf("cur size:%d\n\n",si_getSize(my_list));
-	
-	//si_deleteIndex(my_list,8);
-	//si_print(my_list);
-	//printf("cur size:%d\n\n",si_getSize(my_list));
-	
-	si_reverse(&my_list);
-	si_print(my_list);
-	printf("cur size:%d\n\n",si_getSize(my_list));
-	
-	
-	return 0;
-}
