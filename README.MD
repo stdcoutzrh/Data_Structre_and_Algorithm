@@ -17,5 +17,7 @@
 
 ### 2.2LinkedList
 * **single_linked_list:**
- >* 1.
+ >* 1.Give an head pointer when defining an single list.
+ >* 2.Support for reversing list and judging if the list is cyclic.
+ >* 3.Support for adding and deleting operations.
 
