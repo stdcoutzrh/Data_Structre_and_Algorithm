@@ -21,7 +21,6 @@ dyn_array* dy_createArr(int x)
 		perror("malloc:");
 		exit(-1);
 	}
-	//printf("init size:%d, init length:%d\n",array->size,array->cur_length);
 	return array;
 }
 
@@ -82,7 +81,6 @@ int dy_search(dyn_array *dyn_array, int element)
 
 int dy_pushBack(dyn_array* dyn_array,int element)
 {
-	//printf("size:%d, length:%d\n",dyn_array->size,dyn_array->cur_length);
 	if(dyn_array->size >= dyn_array->cur_length)
 	{
 		
@@ -165,39 +163,3 @@ int dy_delete(dyn_array* dyn_array,int index)
 	--dyn_array->size;
 	return value;
 }
-
-/* test code*/
-
-#if 1
-int main(int argc,char**argv)
-{
-	printf("======dynamic_array test=====\n");
-	
-	int pop_value = 0;
-	
-	dyn_array* my_array = dy_createArr(1);
-	for(int i=0;i<4;++i)
-		dy_pushBack(my_array,i);
-	
-	dy_print(my_array);
-	printf("after push 4 times ,len: %d,size: %d\n\n",dy_curLength(my_array),dy_size(my_array));
-	
-	pop_value = dy_popBack(my_array);
-	printf("pop value: %d\n",pop_value);
-	dy_print(my_array);
-	printf("after pop 1 time ,len: %d,size: %d\n\n",dy_curLength(my_array),dy_size(my_array));
-	
-	dy_insert(my_array,2,222);
-	dy_insert(my_array,3,333);
-	dy_print(my_array);
-	printf("after insert array[2],array[3],len: %d,size: %d\n\n",dy_curLength(my_array),dy_size(my_array));
-	
-	dy_delete(my_array,3);
-	dy_print(my_array);
-	printf("after delete array[3] ,len: %d,size: %d\n\n",dy_curLength(my_array),dy_size(my_array));
-	
-	printf("===dynamic_array test finished===\n\n");
-	return 0;
-}
-#endif
-	

@@ -2,7 +2,7 @@
  *Characteristic:
  *	1.Give an initial size when defining an array
  *	2.Not support for dynamic expansion
- *  3.Support for adding and deleting operations
+ *	3.Support for adding and deleting operations
  *author:stdcoutzrh
  *emai:stdcoutzrh@gmail.com
  */

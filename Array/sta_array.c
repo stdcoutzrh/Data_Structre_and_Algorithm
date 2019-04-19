@@ -92,37 +92,4 @@ int st_nextElem(sta_array *sta_array,int element)
 	}
 	return -1;	
 }
-
-/* test code*/
-
-#if 1
-
-int main(int argc,char**argv)
-{
-	printf("======static_array test=====\n");
-	
-	int loc = 0;
-	sta_array my_array={20,0,NULL};
-	st_initArr(&my_array);
-	
-	for(int i=0;i<10;i++)
-	{
-		st_insert(&my_array,i,i);
-	}
-	
-	st_insert(&my_array,5,666);
-	st_delete(&my_array,5);
-	
-	st_print(&my_array);
-	printf("\n");
-	
-	loc=st_search(&my_array,6);
-	printf("element 6 is at:%d\n",loc);
-	
-	printf("===static_array test finished===\n\n");
-			
-	return 0;
-}
-
-#endif
 		
