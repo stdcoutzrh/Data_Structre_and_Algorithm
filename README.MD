@@ -1,15 +1,8 @@
 # Data_Structre_and_Algorithm
 
 ## Implemention of data structure and algorithm in c language.🌼
-## 1.Project Overview
-Data_Structre_and_Algorithm                                          
-├── Array             
-│   ├── dyn_array.c               
-│   ├── dyn_array.h               
-│   ├── sta_array.c               
-│   └── sta_array.h                   
-└── README.MD                      
-
+## 1.Project Overview(Updating)
+<img src = "https://github.com/StdCoutZRH/Data_Structre_and_Algorithm/Data_Structre.png">              
 
 ## 2.Feature Introduction
 ### 2.1Array
@@ -21,4 +14,8 @@ Data_Structre_and_Algorithm
  >* 1.Give an initial size when defining an array.
  >* 2.Support for dynamic expansion.
  >* 3.Support for adding and deleting operations.
+
+### 2.2LinkedList
+* **single_linked_list:**
+ >* 1.
 
