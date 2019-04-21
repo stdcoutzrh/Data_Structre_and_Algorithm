@@ -1,7 +1,8 @@
 /*double_list.h:This is an implemention of double linked list in C language.
  *Characteristic:
  *	1.Give an head pointer  when defining an double linked list.
- *  2.Support for adding and deleting operations.
+ *	2.Support for reversing list.
+ *  3.Support for adding and deleting operations.
  *author:stdcoutzrh
  *emai:stdcoutzrh@gmail.com
  */
