@@ -21,6 +21,12 @@
  >* 1.Give an head pointer when defining an single list.
  >* 2.Support for reversing list and judging if the list is cyclic.
  >* 3.Support for adding and deleting operations.
+ 
 * **circular_linked_list:**
  >* 1.Give an head pointer and tail pointer when defining an circular linked list.
  >* 2.Support for adding and deleting operations.
+ 
+* **double_linked_list:**
+ >* 1.Give an head pointer when defining an double linked list.
+ >* 2.2.Support for reversing list
+ >* 3.Support for adding and deleting operations.
