@@ -2,7 +2,7 @@
  *Characteristic:
  *	1.Give an head pointer  when defining an double linked list.
  *	2.Support for reversing list.
- *  3.Support for adding and deleting operations.
+ *	3.Support for adding and deleting operations.
  *author:stdcoutzrh
  *emai:stdcoutzrh@gmail.com
  */
