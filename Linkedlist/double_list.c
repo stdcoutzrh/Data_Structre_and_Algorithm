@@ -181,3 +181,36 @@ int dou_deleteIndex(double_list* double_list,int index)
 		}	
 	}
 }
+
+int dou_getIndex(double_list*double_list,int index)
+{
+	if(index>=double_list->size || index <0)
+	{
+		printf("current size is %d,index must in 0 ~ %d!\n",double_list->size,double_list->size -1);
+			return -1;
+	}
+	int i =0;
+	dnode* p = double_list->head;	
+	while(i<index)
+	{
+		p=p->next;
+		++i;
+	}
+	return p->data;
+}
+
+void dou_reverseList(double_list*double_list)
+{
+	int i =0;
+	dnode*q = NULL;
+	dnode* p = double_list->head;
+	double_list->head = p->prior;
+	while(i<double_list->size)
+	{
+		q=p->prior;
+		p->prior = p->next;
+		p->next =q;
+		p=p->next;
+		++i;
+	}	
+}

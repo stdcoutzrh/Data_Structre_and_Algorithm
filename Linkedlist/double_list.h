@@ -35,4 +35,7 @@ void dou_print(double_list* double_list);
 int dou_insertIndex(double_list* double_list,int index ,int element);
 int dou_deleteIndex(double_list* double_list,int index);
 
+int dou_getIndex(double_list*double_list,int index);
+void dou_reverseList(double_list*double_list);
+
 #endif //DOUBLE_LIST_H
