@@ -30,3 +30,9 @@
  >* 1.Give an head pointer when defining an double linked list.
  >* 2.2.Support for reversing list.
  >* 3.Support for adding and deleting operations.
+ 
+ ### 2.3Stack
+ * **array_stack:**
+ >*	1.Give an initial length when defining an array_stack.
+ >*	2.Support for dynamic expansion.
+ >* 3.Support for push and pop operations.
