@@ -1,8 +1,8 @@
 /*array_stack.h:This is an implemention of array_stack in C language.
  *Characteristic:
- *	1.Give an initial length when defining an array_stack
- *	2.Support for dynamic expansion
- *  3.Support for push and pop operations
+ *	1.Give an initial length when defining an array_stack.
+ *	2.Support for dynamic expansion.
+ *  3.Support for push and pop operations.
  *author:stdcoutzrh
  *emai:stdcoutzrh@gmail.com
  */
