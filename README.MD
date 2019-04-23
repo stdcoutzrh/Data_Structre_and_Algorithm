@@ -36,3 +36,7 @@
  >*	1.Give an initial length when defining an array_stack.
  >*	2.Support for dynamic expansion.
  >* 3.Support for push and pop operations.
+ * **linked_list_stack:**
+ >*	1.Give an base pointer and top pointer when defining an linked_list_stack.
+ >* 2.Support for push and pop operations.
+ >* 3.no size limits.
