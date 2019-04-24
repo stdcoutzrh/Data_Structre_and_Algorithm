@@ -28,6 +28,8 @@ typedef struct double_list
 }double_list;
 
 double_list* dou_createList(void);
+void dou_destoryList(double_list* double_list);
+
 int dou_getSize(double_list* double_list);
 bool dou_isEmpty(double_list* double_list);
 

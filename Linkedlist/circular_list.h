@@ -27,6 +27,8 @@ typedef struct circular_list
 }circular_list;
 
 circular_list* ci_createList(void);
+void ci_destoryList(circular_list* circular_list);
+
 int ci_getSize(circular_list* circular_list);
 bool ci_isEmpty(circular_list* circular_list);
 

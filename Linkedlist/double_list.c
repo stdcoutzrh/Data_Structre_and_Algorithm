@@ -12,6 +12,13 @@ double_list* dou_createList(void)
 	list->size = 0;
 	return list;
 }
+
+void dou_destoryList(double_list* double_list)
+{
+	if(double_list->head!=NULL)
+		free(double_list->head);
+	free(double_list);
+}
 	
 int dou_getSize(double_list* double_list)
 {

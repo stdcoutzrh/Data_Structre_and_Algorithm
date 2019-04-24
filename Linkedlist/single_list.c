@@ -12,6 +12,13 @@ single_list* si_createSingleList(void)
 	list -> size =0;
 	return list;
 }
+
+void si_destoryList(single_list*single_list)
+{
+	if(single_list->head!=NULL)
+		free(single_list->head);
+	free(single_list);
+}
 	
 bool si_isEmpty(single_list*single_list)
 {

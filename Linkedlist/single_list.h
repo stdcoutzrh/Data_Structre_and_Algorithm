@@ -29,6 +29,8 @@ typedef struct single_list
 }single_list;
 
 single_list* si_createSingleList(void);
+void si_destoryList(single_list*single_list);
+
 bool si_isEmpty(single_list*single_list);
 int si_getSize(single_list*single_list);
 void si_print(single_list*single_list);

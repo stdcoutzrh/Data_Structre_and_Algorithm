@@ -14,6 +14,12 @@ circular_list* ci_createList(void)
 	return list;
 }
 	
+void ci_destoryList(circular_list* circular_list)
+{
+	if(circular_list->base!=NULL)
+		free(circular_list->base);
+	free(circular_list);
+}
 		
 int ci_getSize(circular_list* circular_list)
 {
