@@ -29,6 +29,7 @@ int st_getValueAt(sta_array *sta_array,int index);	//return the value of loc ind
 void st_print(sta_array *sta_array);	//print sta_array
 
 void st_initArr(sta_array *sta_array);	//malloc space for sta_array
+void st_destoryArr(sta_array *sta_array);
 
 int st_insert(sta_array *sta_array,int index,int element);	//insert element
 int st_delete(sta_array *sta_array, int index);	//delete index location element

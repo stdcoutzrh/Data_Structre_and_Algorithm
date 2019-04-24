@@ -92,4 +92,11 @@ int st_nextElem(sta_array *sta_array,int element)
 	}
 	return -1;	
 }
+
+void st_destoryArr(sta_array *sta_array)
+{
+	if(sta_array->arr!=NULL)
+		free(sta_array->arr);
+	free (sta_array);
+}
 		
