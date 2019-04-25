@@ -1,8 +1,7 @@
 /*array_queue.h:This is an implemention of array_queue in C language.
  *Characteristic:
  *	1.Give an initial length when defining an array_queue
- *	2.Support for dynamic expansion
- *  3.Support for push and pop operations
+ *  2.Support for enqueue and dequeue operations
  *author:stdcoutzrh
  *emai:stdcoutzrh@gmail.com
  */
