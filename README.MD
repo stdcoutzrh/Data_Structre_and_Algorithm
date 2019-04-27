@@ -40,3 +40,7 @@
  >*	1.Give an base pointer and top pointer when defining an linked_list_stack.
  >* 2.Support for push and pop operations.
  >* 3.no size limits.
+ 
+ ### 2.4Queue
+ * **array_queue:**
+ * **linked_list_queue:**
