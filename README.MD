@@ -43,8 +43,10 @@
  
  ### 2.4Queue
  * **array_queue:**
- >*	1.Give an initial length when defining an array_queue
- >* 2.Support for enqueue and dequeue operations
+ >*	1.Give an initial length when defining an array_queue.
+ >* 2.Support for enqueue and dequeue operations.
  * **linked_list_queue:**
- >*	1.Give an initial length when defining an linked_list_queue
- >* 2.Support for enqueue and dequeue operations
+ >*	1.Give an initial length when defining an linked_list_queue.
+ >* 2.Support for enqueue and dequeue operations.
+
+  ### 2.5String
