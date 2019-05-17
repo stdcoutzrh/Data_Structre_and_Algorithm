@@ -1,3 +1,11 @@
+/*sort.h:This is an implemention of sort algorithms in C language.
+ *author:stdcoutzrh
+ *emai:stdcoutzrh@gmail.com
+ */
+
+#ifndef SORT_H
+#define SORT_H
+
 #include<stdio.h>
 
 //a是数组，n是数组中元素的个数
@@ -22,3 +30,7 @@ void bubble_sort(int a[],int n)
 			break;
 	}
 }
+
+
+
+#endif //SORT_H
