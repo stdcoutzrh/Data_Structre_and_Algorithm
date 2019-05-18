@@ -9,6 +9,7 @@
 #include<stdio.h>
 
 //a是数组，n是数组中元素的个数
+
 void bubble_sort(int a[],int n)
 {
 	if(n<=1)
@@ -29,6 +30,43 @@ void bubble_sort(int a[],int n)
 		if(!flag)
 			break;
 	}
+}
+
+void inseration_sort(int a[],int n)
+{
+	if(n<=1)
+		return;
+	for(int i=0;i<n;++i)
+	{
+		int value = a[i];	//待插入的元素
+		int j = i-1;	//从后往前找
+		//查找插入位置
+		for(;j>=0;--j)
+		{
+			if(a[j]>value)
+			{
+				a[j+1] = a[j];	//移动数据
+			}
+			else
+				break;
+		}
+		a[j+1]=value;
+	}
+}
+
+void slection_sort(int a[],int n)
+{
+	int temp = 0;
+	for(int i=0;i<n-1;++i)
+		for(int j=i-1;j<n;++j)
+		{
+			if(a[i]>a[j])
+			{
+				temp = a[i];
+				a[i]=a[j];
+				a[j]=temp;
+			}
+		}
 }
 
 
