@@ -7,6 +7,9 @@
 #define SORT_H
 
 #include<stdio.h>
+#include<stdlib.h>
+#include<stdbool.h>
+#include<string.h>
 
 //a是数组，n是数组中元素的个数
 
@@ -69,6 +72,81 @@ void slection_sort(int a[],int n)
 		}
 }
 
+void merge(int*a,p,q,r)
+{
+	int *tmp = (int*)malloc((r - p + 1) * sizeof(int));
+	if(!tmp)
+		perror("malloc failed.")	
+	int i, j, k;
+	for (i = p, j = q + 1, k = 0; i <= q && j <= r;) 
+	{
+		if (a[i] <= a[j])
+			tmp[k++] = a[i++];
+		else
+			tmp[k++] = a[j++];
+	}
+	if (i == q + 1) 
+	{
+		for (; j <= r;)
+			tmp[k++] = a[j++];
+	} 
+	else {
+		for (; i <= q;)
+			tmp[k++] = a[i++];
+	}
+	memcpy(a + p, tmp, (r - p + 1) * sizeof(int));
+	free(tmp);	
+}
+
+void merge_sort(int *a, int p, int r)
+{
+	int q;
+
+	if (p >= r)
+		return;
+
+	q = (p + r) / 2;
+	merge_sort(a, p, q);
+	merge_sort(a, q + 1, r);
+	merge(a, p, q, r);
+}
+
+void swap(int *a, int *b)
+{
+	int tmp = *a;
+	*a = *b;
+	*b = tmp;
+}
+
+int get_q(int *a, int p, int r)
+{
+	int i, j;
+	i = j = p;
+
+	for (; j < r; ++j)
+	{
+		if (a[j] < a[r]) 
+		{
+			if(i != j)
+			{
+				swap(a + i, a + j);
+			}
+			++i;
+		}
+	}
+	swap(a + i, a + r);
+	return i;
+}
+
+void quick_sort(int *a, int p, int r)
+{
+	int q;
+	if (p >= r)
+		return;
+	q = get_q(a, p, r);
+	quick_sort(a, p, q-1);
+	quick_sort(a, q+1, r);
+}
 
 
 #endif //SORT_H
