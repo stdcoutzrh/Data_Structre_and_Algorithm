@@ -7,6 +7,42 @@ struct ListNode {
 	struct ListNode *next;
 };
 
+/****************** 141.环形链表 *******************/
+bool hasCycle(struct ListNode *head) {
+	if (head == NULL||head->next == NULL)
+		return false;
+
+	struct ListNode*fast = head;
+	struct ListNode*slow = head;
+
+	while (fast != NULL&& fast->next!=NULL)
+	{
+		fast = fast->next->next;
+		slow = slow->next;
+		if (fast == slow)
+		{
+			return true;
+		}
+		
+	}
+	return false;
+
+	/* 一个讨巧但是效率不高的方法
+
+		struct ListNode*p = head;
+		while(p)
+		{
+			if(p->val==88458185)	//	此处任意取一个不常见的数字即可
+				return true;
+			else
+				p->val=88458185;
+            
+			p=p->next;
+		}
+		return false;
+	*/
+}
+
 /****************** 160.相交链表 *******************/
 
 struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
