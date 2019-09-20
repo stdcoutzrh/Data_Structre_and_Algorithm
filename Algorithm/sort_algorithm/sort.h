@@ -13,92 +13,152 @@
 
 //a是数组，n是数组中元素的个数
 
-void bubble_sort(int a[],int n)
+//冒泡排序	O(n^2)
+void bubble_sort(int a[], int n)
 {
-	if(n<=1)
+	if (n <= 1)
 		return;
-	for(int i=0;i<n;++i)
+
+	int flag = 0;
+	for (int i = 0; i < n; ++i)
 	{
-		int flag = 0;//设定是否提前退出冒泡排序操作的flag
-		for(int j=0;j<n-1;++j)
+		for (int j = 0; j < n-1; ++j)
 		{
-			if(a[j]>a[j+1])
+			if (a[j]>a[j+1])
 			{
-				int temp = a[j];
+				int tmp = a[j];
 				a[j] = a[j+1];
-				a[j+1] = temp;
-				flag = 1; //flag = 1表示有数据交换
-			}					
+				a[j+1] = tmp;
+				flag = 1;
+			}
 		}
-		if(!flag)
+		if (flag == 0)
 			break;
 	}
 }
 
-void inseration_sort(int a[],int n)
+//直接插入排序	O(n^2)
+void inseration_sort(int a[], int n)
 {
-	if(n<=1)
+	if (n <= 1)
 		return;
-	for(int i=0;i<n;++i)
+
+	for (int i = 1; i<n; ++i)
 	{
-		int value = a[i];	//待插入的元素
-		int j = i-1;	//从后往前找
-		//查找插入位置
-		for(;j>=0;--j)
+		int tmp = a[i];
+		int j;
+		for (j = i - 1; j >= 0; --j)
 		{
-			if(a[j]>value)
+			if (a[j]>tmp)
 			{
-				a[j+1] = a[j];	//移动数据
+				a[j + 1] = a[j];
 			}
 			else
 				break;
 		}
-		a[j+1]=value;
+		a[j+1] = tmp;
 	}
 }
 
-void slection_sort(int a[],int n)
+//折半插入排序	O(n^2)
+void binary_inseration_sort(int a[], int n)
 {
-	int temp = 0;
-	for(int i=0;i<n-1;++i)
-		for(int j=i-1;j<n;++j)
+	if (n <= 1)
+		return;
+
+	for (int i = 1; i<n; ++i)
+	{
+		int tmp = a[i];
+		//查找区间 0~i-1
+		int low = 0, high = i - 1;
+		int mid;
+		while (low <= high)
 		{
-			if(a[i]>a[j])
+			mid = (low + high) / 2;
+			if (a[mid]>tmp)
 			{
-				temp = a[i];
-				a[i]=a[j];
-				a[j]=temp;
+				high = mid-1;
+			}
+			else 
+			{
+				low = mid+1;
 			}
 		}
+
+		//将插入处后面的值后移，然后插入该值
+		int j;
+		for (j = i - 1; j >= low; --j)
+		{
+			a[j + 1] = a[j];
+		}
+		a[j + 1] = tmp;
+	}
 }
 
-void merge(int*a,p,q,r)
+//选择排序	O(n^2)
+void selection_sort(int a[], int n)
 {
+	if (n <= 1)
+		return;
+
+	for (int i = 0; i < n - 1; ++i)
+	{
+		int tmp, index = i;
+		//找到最小的index号
+		for (int j = i + 1; j < n; ++j)
+		{
+			if (a[j] < a[index])
+				index = j;
+		}
+
+		//最小的就是当前i
+		if (index == i)
+			continue;
+
+		//将最小的与i处的值交换
+		tmp = a[i];
+		a[i] = a[index];
+		a[index] = tmp;
+	}
+}
+
+//归并排序	O(nlogn)
+void merge(int*a, int p,int q,int r)	
+{
+	//q把以p为起点，r为终点的序列分为两部分，即要合并的两部分
+	//merge函数将这两个已有序的序列合并成一个有序序列
+	
+	//tmp数组申请来存放两个序列合并之后的结果
 	int *tmp = (int*)malloc((r - p + 1) * sizeof(int));
-	if(!tmp)
-		perror("malloc failed.")	
+	if (!tmp)
+		perror("malloc failed.");
+	
+	//合并两个序列
 	int i, j, k;
-	for (i = p, j = q + 1, k = 0; i <= q && j <= r;) 
+	for (i = p, j = q + 1, k = 0; i <= q && j <= r;)
 	{
 		if (a[i] <= a[j])
 			tmp[k++] = a[i++];
 		else
 			tmp[k++] = a[j++];
 	}
-	if (i == q + 1) 
+	if (i == q + 1)
 	{
 		for (; j <= r;)
 			tmp[k++] = a[j++];
-	} 
-	else {
+	}
+	else 
+	{
 		for (; i <= q;)
 			tmp[k++] = a[i++];
 	}
+
+	//用tmp里已合并的的数据覆盖原始序列里的数据
 	memcpy(a + p, tmp, (r - p + 1) * sizeof(int));
-	free(tmp);	
+	free(tmp);
 }
 
-void merge_sort(int *a, int p, int r)
+void merge_sort(int a[], int p, int r)
 {
 	int q;
 
@@ -111,23 +171,26 @@ void merge_sort(int *a, int p, int r)
 	merge(a, p, q, r);
 }
 
-void swap(int *a, int *b)
+
+//快速排序	O(nlogn)
+
+void swap(int *a, int*b)	//交换两个数
 {
 	int tmp = *a;
 	*a = *b;
 	*b = tmp;
 }
 
-int get_q(int *a, int p, int r)
+int get_q(int a[], int p, int r)
 {
 	int i, j;
 	i = j = p;
 
 	for (; j < r; ++j)
 	{
-		if (a[j] < a[r]) 
+		if (a[j] < a[r])
 		{
-			if(i != j)
+			if (i != j)
 			{
 				swap(a + i, a + j);
 			}
@@ -138,15 +201,14 @@ int get_q(int *a, int p, int r)
 	return i;
 }
 
-void quick_sort(int *a, int p, int r)
+void quick_sort(int a[], int p, int r)	//p...r为待排序区间
 {
 	int q;
 	if (p >= r)
 		return;
 	q = get_q(a, p, r);
-	quick_sort(a, p, q-1);
-	quick_sort(a, q+1, r);
+	quick_sort(a, p, q - 1);
+	quick_sort(a, q + 1, r);
 }
-
 
 #endif //SORT_H
