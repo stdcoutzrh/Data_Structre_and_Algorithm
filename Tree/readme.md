@@ -60,5 +60,215 @@ int tree[maxSize];
 * 树的顺序存储结构的双亲表示法;
 * 树的链式存储结构的孩子表示法或孩子兄弟表示法。
 
+@[toc](数据结构之二叉树)
+
+## 1.二叉树的定义
+在理解了树之后，再来看二叉树就很容易理解了。二叉树就是在一般的树上增加了如下两个限制条件：
+* **1.树中的每个结点至多有两棵子树，也就是说树中的结点的度只能为0,1，2**。
+* **2.结点的子树有左右之分，不可以颠倒顺序**。
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/20191002202500683.PNG?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L1BlY29IZQ==,size_16,color_FFFFFF,t_70)
+根据上面的定义，可以看出二叉树共有5中基本形态（如上图），即空二叉树、只有一个根结点的二叉树、只有左子树的二叉树、只有右子树的二叉树以及左右子树都有的二叉树。
+
+在一棵二叉树中，如果所有的分支结点都有左孩子和右孩子结点，并且叶子结点都集中在二叉树的最下面一层，那么就成这样的二叉树为**满二叉树**。
+
+如果对一棵深度为k，有n个结点的二叉树进行编号后，各个结点的编号与深度为k的满二叉树中相同位置上的结点的编号均为相同，那么就称这样的二叉树为**完全二叉树**。
+
+通俗的说，一棵完全二叉树一定是由一个满二叉树从右至左从下至上，挨个删除结点所得到的。如果跳着删除，那么得到的就不是完全二叉树。
+
+## 2.二叉树的主要特征
+>* 性质1：**非空二叉树上叶子结点数等于双分支结点数加1**。
+>* 性质2：**二叉树的第i层上最多有$2^{i-1}(i>=1)$个结点**。
+>* 性质3：**高度（或深度）为k的二叉树最多有$2^{k-1}(k>=1)$个结点，也就是说，满二叉树的前k层结点总数为$2^{k-1}$**。
+>* 性质4：**给定n个结点，可以构成$\frac{C^n_{2n}} {n+1}$种不同的二叉树**。
+>* 性质5：**具有n个结点的完全二叉树的高度为$\lfloor log2^n\rfloor+1$**。
+## 3.二叉树的顺序存储结构和链式存储结构
+### 3.1顺序存储结构
+顺序存储结构使用一个数组来存储一棵二叉树，这种存储方式最适合完全二叉树，但用于存储一般二叉树会浪费大量的存储空间。将完全二叉树的结点值按编号依次存入一个一位数组中，即完成了一个二叉树的顺序存储。
+
+### 3.2链式存储结构
+顺序存储显然有很大的局限性，不便于存储任意形态的二叉树。观察二叉树可以发现二叉树是一个根节点与两棵子树之间的关系，因此设计出一种含有一个数据与和两个指针域的链式结构，具体如下：
+```c
+typedef struct BTNode
+{
+	char data;
+	struct BTNode* lchild;
+	struct BTNode* rchild;
+}BTNode;
+```
+## 4.二叉树的遍历
+二叉树的遍历方式有先序遍历、中序遍历、后序遍历和层次遍历。
+
+### 4.1 先序遍历：根左右
+```c
+void preorder(BTNode* p)
+{
+	if(p!=NULL)
+	{
+		visit(p);
+		preorder(p->lchild);
+		preorder(p->rchild);
+	}
+}
+```
+
+### 4.2 中序遍历：左根右
+```c
+void inorder(BTNode* p)
+{
+	if(p!=NULL)
+	{
+		preorder(p->lchild);
+		visit(p);
+		preorder(p->rchild);
+	}
+}
+```
+
+### 4.3 后序遍历：左右根
+```c
+void postorder(BTNode* p)
+{
+	if(p!=NULL)
+	{		
+		preorder(p->lchild);
+		preorder(p->rchild);
+		visit(p);
+	}
+}
+```
+
+**练习题：**
+1.写一个算法求一棵二叉树的深度，二叉树以二叉链表为存储方式。
+```c
+int getDepth(BTNode*p)
+```
+2.在一颗以二叉链表为存储结构的二叉树中，查找data域等于key的结点是否存在，若存在找到任何一个满足要求的结点即可，并将q指向该节点，否则将q赋值为NULL，设data为int型。（剪枝的概念）
+```c
+void search(BTNode* p,BTNode*&q,int key)
+```
+3.假设二叉树采用二叉链表存储结构进行存储，设计一个算法输出先序遍历中第k个结点的值，设k不大于总的结点数，且data为char型。
+```c
+void trave(BTNode*p,int k)
+```
+
+### 4.4 层次遍历
+```c
+void level(BTNode*p)
+{
+	int front,rear;
+	BTNode* que[maxSize];
+	front=rear=0;
+	BTNode*q;
+	if(p!=NULL)
+	{
+		rear=(rear+1)%maxSize;
+		q=que[front];
+		visit(q);
+		if(q->lchild!=NULL)
+		{
+			rear=(rear+1)%maxSize;
+			que[rear]=q->lchild;
+		}
+		if(q->rchild!=NULL)
+		{
+			rear=(rear+1)%maxSize;
+			que[rear]=q->rchild;
+		}
+	}
+}
+```
+**练习题**：
+1.假设一个二叉树采用二叉链表存储结构存储，设计一个算法求出该二叉树的宽度。
+
+## 5.二叉树深度优先遍历算法的非递归实现
+先序遍历非递归算法：
+```c
+void preorderNorecu(BTNode* bt)
+{
+	if(bt!=NULL)
+	{
+		BTNode* Stack[maxSize];//定义一个栈
+		int top = -1;//初始化这个栈
+		BTNode* p;
+		Stack[++top]=bt;//根结点入栈
+		while(top!=-1)
+		{
+			p=Stack[top--];//出栈并输出栈顶结点
+			visit(p);//访问结点p
+			if(p->rchild!=NULL)//栈顶结点的右孩子存在则右孩子入栈
+			{
+				Stack[++top]=p->rcild;
+			}
+			if(p->lchild!=NULL)//栈顶结点的左孩子存在则左孩子进栈
+			{
+				Steck[++top]=p->lchild;
+			}
+		}
+	}
+}
+```
+
+中序遍历非递归算法实现：
+```c
+void inorderNorecu(BTNode* bt)
+{
+	if(bt!=NULL)
+	{
+		BTNode* Stack[maxSize];//定义一个栈
+		int top = -1;//初始化这个栈
+		BTNode* p;
+		p = bt;
+		
+		while(top!=-1||p!=NULL)
+		{
+			while(p!=NULL)	//左孩子存在则左孩子进栈
+			{
+				Stack[++top]=p;
+				p=p->lchild;
+			}
+			if(top==-1)//在栈不为空的情况下出栈并输出栈结点
+			{
+				p=Stack[top--];
+				visit(p);
+				p=p->rchild;
+			}
+		}
+	}
+}
+```
+
+后序遍历算法的非递归实现：
+```c
+void inorderNorecu(BTNode* bt)
+{
+	if(bt!=NULL)
+	{
+		//定义两个栈
+		BTNode* Stack1[maxSize];int top1 = -1;
+		BTNode* Stack2[maxSize];int top2 = -1;
+		BTNode* p = NULL;
+		Stack1[++top1] = bt;
+		
+		while(top1!=-1)
+		{
+			p = Stack1[top1--];
+			Stack2[++top2]=p;
+			if(p->lchild!=NULL)
+				Stack1[++top1]=p->lchild;
+			if(p->rchild!=NULL)
+				Stack1[++top1]=p->rchild;
+		}
+		while(top2!=-1)
+		{
+			p = Stack2[top2--];//出栈序列即为后序遍历序列
+			visit(p);
+		}
+	}
+}
+```
+
+
+
 
 
