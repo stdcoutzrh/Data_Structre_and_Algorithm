@@ -1,4 +1,4 @@
-#include "XXString.h"
+#include "String.h"
 #include <cstring>
 #include <cstdlib>
 #include "Exception.h"
